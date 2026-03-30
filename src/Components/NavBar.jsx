@@ -22,11 +22,11 @@ function Navbar() {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-                        <li><a>Products</a></li>
-                        <li><a>Features</a></li>
-                        <li><a>Pricing</a></li>
-                        <li><a>Testimonials</a></li>
-                        <li><a>FAQ</a></li>
+                        <li className="text-[18px]">Products</li>
+                        <li className="text-[18px]">Features</li>
+                        <li className="text-[18px]">Pricing</li>
+                        <li className="text-[18px]">Testimonials</li>
+                        <li className="text-[18px]">FAQ</li>
                     </ul>
                 </div>
 
@@ -39,11 +39,11 @@ function Navbar() {
             {/* Desktop Menu */}
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-2">
-                    <li><a>Products</a></li>
-                    <li><a>Features</a></li>
-                    <li><a>Pricing</a></li>
-                    <li><a>Testimonials</a></li>
-                    <li><a>FAQ</a></li>
+                    <li><a className="text-[18px]">Products</a></li>
+                    <li><a className="text-[18px]">Features</a></li>
+                    <li><a className="text-[18px]">Pricing</a></li>
+                    <li><a className="text-[18px]">Testimonials</a></li>
+                    <li><a className="text-[18px]">FAQ</a></li>
                 </ul>
             </div>
 
