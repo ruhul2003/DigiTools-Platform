@@ -1,16 +1,20 @@
-# React + Vite
+🚀 DigiTools Platform
+Empowering creators with premium digital solutions. DigiTools is a modern, high-performance web platform built to provide instant access to a curated suite of digital tools. From AI writing assistants to professional design templates, we help you bridge the gap between idea and execution.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🛠️ Tech Stack
+Built with a focus on speed, developer experience, and modern UI/UX standards:
 
-Currently, two official plugins are available:
+Frontend Framework: React JS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Styling: Tailwind CSS , DaisyUI , React Icons
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✨ Key Features
+💎 1. Intelligent Tool Discovery
+Browse a sleek, responsive catalog of premium assets. Each tool is categorized and detailed, allowing users to find exactly what they need—whether it’s AI Writing Pro or Advanced Analytics—in seconds.
 
-## Expanding the ESLint configuration
+💳 2. Tiered Subscription Model
+A fully functional pricing architecture featuring Starter, Pro, and Enterprise tiers. Each card is meticulously styled with Tailwind CSS to highlight the "Most Popular" options and include clear, actionable call-to-actions.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📱 3. Mobile-First Responsive Design
+Engineered to look stunning on any device. Utilizing Tailwind’s grid and flexbox utilities, the layout seamlessly transitions from a 3-column desktop view to a 2-column tablet layout, and finally a single-column mobile experience.
