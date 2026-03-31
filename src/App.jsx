@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Steps from './Components/Steps';
 import Pricing from './Components/Pricing';
-import Ready from './Components/Pricing';
+import Ready from './Components/Ready';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
