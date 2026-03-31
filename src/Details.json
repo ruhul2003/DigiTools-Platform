@@ -1,130 +1,90 @@
 [
   {
     "id": 1,
-    "name": "Resume Builder Pro",
-    "description": "Create professional resumes with modern templates and ATS optimization.",
-    "price": 9.99,
+    "name": "AI Writing Pro",
+    "image": "1.png",
+    "description": "Generate high-quality content, blogs, and marketing copy in seconds with advanced AI.",
+    "price": 29,
     "period": "monthly",
-    "tag": "popular",
-    "tagType": "popular",
-    "features": [
-      "100+ templates",
-      "ATS optimization",
-      "Export to PDF",
-      "Real-time preview"
-    ],
-    "icon": "FileText"
+    "tag": "Best Seller",
+    "tagType": "best",
+    "features": ["Unlimited AI generations", "50+ writing templates", "Grammar checker"]
   },
   {
     "id": 2,
-    "name": "Portfolio Website Kit",
-    "description": "Build stunning personal portfolio websites بسهولة.",
-    "price": 29.99,
+    "name": "Design Templates Pack",
+    "image": "2.png",
+    "description": "2000+ premium templates for social media, presentations, and marketing materials.",
+    "price": 49,
     "period": "one-time",
-    "tag": "best seller",
-    "tagType": "best seller",
-    "features": [
-      "50+ layouts",
-      "Responsive design",
-      "SEO friendly",
-      "Custom domain support"
-    ],
-    "icon": "Globe"
+    "tag": "Popular",
+    "tagType": "popular",
+    "features": ["2000+ templates", "Monthly updates", "Commercial license"]
   },
   {
     "id": 3,
-    "name": "Job Tracker",
-    "description": "Track all your job applications in one place.",
-    "price": 4.99,
+    "name": "Premium Stock Assets",
+    "image": "3.png",
+    "description": "Access millions of royalty-free photos, videos, and graphics.",
+    "price": 19,
     "period": "monthly",
-    "tag": "new",
+    "tag": "New",
     "tagType": "new",
-    "features": [
-      "Application tracking",
-      "Interview reminders",
-      "Status updates",
-      "Notes section"
-    ],
-    "icon": "Briefcase"
+    "features": ["10M+ assets", "Commercial use", "No attribution"]
   },
   {
     "id": 4,
-    "name": "LinkedIn Booster",
-    "description": "Optimize your LinkedIn profile to attract recruiters.",
-    "price": 14.99,
-    "period": "yearly",
-    "tag": "popular",
+    "name": "Automation Toolkit",
+    "image": "4.png",
+    "description": "Automate repetitive tasks and streamline your workflow.",
+    "price": 79,
+    "period": "monthly",
+    "tag": "Popular",
     "tagType": "popular",
-    "features": [
-      "Profile analysis",
-      "Keyword suggestions",
-      "Headline generator",
-      "Growth tips"
-    ],
-    "icon": "Linkedin"
+    "features": ["50+ automations", "API access", "Custom workflows"]
   },
   {
     "id": 5,
-    "name": "Cover Letter AI",
-    "description": "Generate personalized cover letters using AI.",
-    "price": 7.99,
-    "period": "monthly",
-    "tag": "best seller",
-    "tagType": "best seller",
-    "features": [
-      "AI writing",
-      "Multiple templates",
-      "Job-specific customization",
-      "Download options"
-    ],
-    "icon": "PenTool"
+    "name": "Resume Builder Pro",
+    "image": "5.png",
+    "description": "Create professional resumes and cover letters.",
+    "price": 15,
+    "period": "one-time",
+    "tag": "New",
+    "tagType": "new",
+    "features": ["100+ templates", "ATS optimization", "Export to PDF"]
   },
   {
     "id": 6,
-    "name": "Skill Assessment",
-    "description": "Test and improve your professional skills.",
-    "price": 19.99,
-    "period": "yearly",
-    "tag": "new",
-    "tagType": "new",
-    "features": [
-      "100+ tests",
-      "Instant results",
-      "Skill reports",
-      "Certification"
-    ],
-    "icon": "CheckCircle"
+    "name": "Social Media Content Kit",
+    "image": "6.png",
+    "description": "Complete toolkit for creating engaging social media content.",
+    "price": 39,
+    "period": "monthly",
+    "tag": "Best Seller",
+    "tagType": "best",
+    "features": ["5000+ assets", "Scheduler included", "Analytics dashboard"]
   },
   {
     "id": 7,
     "name": "Freelancer Toolkit",
-    "description": "All-in-one toolkit for freelancers to manage work.",
-    "price": 39.99,
-    "period": "one-time",
-    "tag": "popular",
+    "image": "7.png",
+    "description": "Manage clients, invoices, and projects in one place.",
+    "price": 25,
+    "period": "monthly",
+    "tag": "Popular",
     "tagType": "popular",
-    "features": [
-      "Invoice generator",
-      "Client management",
-      "Time tracking",
-      "Expense tracking"
-    ],
-    "icon": "Tool"
+    "features": ["Invoice generator", "Client management", "Time tracking"]
   },
   {
     "id": 8,
     "name": "Interview Prep Master",
+    "image": "8.png",
     "description": "Prepare for interviews with mock questions and tips.",
-    "price": 11.99,
+    "price": 12,
     "period": "monthly",
-    "tag": "best seller",
-    "tagType": "best seller",
-    "features": [
-      "Mock interviews",
-      "Common Q&A",
-      "Video practice",
-      "Feedback system"
-    ],
-    "icon": "Mic"
+    "tag": "Best Seller",
+    "tagType": "best",
+    "features": ["Mock interviews", "Common Q&A", "Feedback system"]
   }
 ]
