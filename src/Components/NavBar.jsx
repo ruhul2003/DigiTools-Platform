@@ -38,7 +38,7 @@ function Navbar() {
 
             {/* Desktop Menu */}
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 gap-2">
+                <ul className="menu menu-horizontal text-[18px] font-semibold px-1 gap-2">
                     <li><a className="text-[18px]">Products</a></li>
                     <li><a className="text-[18px]">Features</a></li>
                     <li><a className="text-[18px]">Pricing</a></li>
@@ -50,7 +50,7 @@ function Navbar() {
             {/* Right Section */}
             <div className="navbar-end gap-4">
                 <CiShoppingCart size={24} />
-                <a>Login</a>
+                <a className="text-[18px] font-semibold">Login</a>
                 <a className="btn bg-[#7823F8] text-white border-2 border-[#7823F8] rounded-full hover:bg-white hover:text-[#7823F8]">
                     Get Started
                 </a>

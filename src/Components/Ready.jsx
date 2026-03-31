@@ -1,6 +1,6 @@
 function Ready(){
     return(
-        <div className="w-full mx-auto mt-28 mb-16 text-center px-4 bg-linear-to-r from-purple-600 to-indigo-600 py-36 text-white">
+        <div className="w-full mx-auto mt-28  text-center px-4 bg-linear-to-r from-purple-600 to-indigo-600 py-36 text-white">
             <h1 className="text-3xl md:text-4xl text-white md:text-5xl font-bold">Ready to Transform Your Workflow?</h1>
             <p className="mt-4 text-white">Join thousands of professionals who are already using Digitools to work smarter.Start your free trial today.</p>
 
