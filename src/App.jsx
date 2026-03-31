@@ -1,22 +1,58 @@
+import { useState } from 'react';
+import './App.css';
+import Banner from './Components/Banner';
+import Navbar from './Components/NavBar';
+import Premium from './Components/Premium'; 
+import Ratings from './Components/Ratings';
 
-import './App.css'
-import Banner from './Components/Banner'
-import Navbar from './Components/NavBar'
-import Premium from './Components/Premiuim'
-import Ratings from './Components/Ratings'
+// 1. Import Toastify components
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (id) => {
+    if (!cartItems.includes(id)) {
+      setCartItems([...cartItems, id]);
+    }
+  };
+
+  const removeFromCart = (id) => {
+    setCartItems(cartItems.filter(itemId => itemId !== id));
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   return (
     <>
-      
-      <Navbar/>
-      <Banner/>
-      <Ratings/>
-      <Premium/>
-      
+      <Navbar cartCount={cartItems.length} />
+      <Banner />
+      <Ratings />
+      <Premium 
+        cartItems={cartItems} 
+        addToCart={addToCart} 
+        removeFromCart={removeFromCart} 
+        clearCart={clearCart}
+      />
+
+      {/* 2. Add the Container at the bottom of the fragment */}
+      <ToastContainer 
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
