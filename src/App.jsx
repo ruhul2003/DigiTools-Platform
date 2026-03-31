@@ -9,6 +9,7 @@ import Ratings from './Components/Ratings';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Steps from './Components/Steps';
+import Pricing from './Components/Pricing';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -53,6 +54,7 @@ function App() {
         theme="colored"
       />
       <Steps/>
+      <Pricing/>
     </>
   );
 }
