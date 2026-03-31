@@ -8,6 +8,7 @@ import Ratings from './Components/Ratings';
 // 1. Import Toastify components
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Steps from './Components/Steps';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -51,6 +52,7 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+      <Steps/>
     </>
   );
 }
