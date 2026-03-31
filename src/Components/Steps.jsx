@@ -4,11 +4,11 @@ import rocketPng from '../../assets/rocket.png';
 function Steps() {
     return (
         <div className="w-4/5 mx-auto mt-16 mb-16">
-            {/* Header - Scaled text for smaller screens */}
+            
             <h1 className="text-3xl md:text-5xl font-bold text-center">Get Started in 3 Steps</h1>
             <p className="text-center text-gray-600 mt-4 px-4">Start using premium digital tools in minutes, not hours.</p>
 
-            {/* Steps Container - Column on mobile, Row on Large screens */}
+            
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mt-12">
 
                 {/* Step 1 */}

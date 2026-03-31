@@ -4,7 +4,7 @@ import { FaCheck, FaTrash } from "react-icons/fa";
 // 1. Import toast
 import { toast } from 'react-toastify';
 
-// Images (keeping your existing imports)
+
 import img1 from "../../assets/products/1.png";
 import img2 from "../../assets/products/2.png";
 import img3 from "../../assets/products/3.png";
@@ -25,7 +25,7 @@ function Premium({ cartItems, addToCart, removeFromCart, clearCart }) {
   const cartData = data.filter((item) => cartItems.includes(item.id));
   const totalPrice = cartData.reduce((acc, item) => acc + item.price, 0);
 
-  // 2. Wrap the Add function to include toast
+
   const handleAddWithToast = (item) => {
     if (!cartItems.includes(item.id)) {
       addToCart(item.id);
@@ -33,13 +33,13 @@ function Premium({ cartItems, addToCart, removeFromCart, clearCart }) {
     }
   };
 
-  // 3. Wrap the Remove function to include toast
+
   const handleRemoveWithToast = (item) => {
     removeFromCart(item.id);
     toast.error(`${item.name} removed from cart`);
   };
 
-  // 4. Update the Checkout function
+
   const handleCheckout = () => {
     if (cartItems.length > 0) {
       toast.info("Purchase Successful! Order processed.", {
@@ -113,7 +113,7 @@ function Premium({ cartItems, addToCart, removeFromCart, clearCart }) {
               <ul className="mt-4 space-y-2 text-sm text-gray-600">
                 {item.features.map((f, i) => (<li key={i} className="flex items-center gap-2"><FaCheck className="text-green-500 text-[10px]" /> {f}</li>))}
               </ul>
-              {/* USE handleAddWithToast here */}
+              
               <button
                 onClick={() => handleAddWithToast(item)}
                 className={`mt-6 w-full py-3 rounded-xl text-white font-semibold transition-all 

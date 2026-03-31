@@ -40,7 +40,7 @@ function App() {
         clearCart={clearCart}
       />
 
-      {/* 2. Add the Container at the bottom of the fragment */}
+        {/* Toast Container for notifications */}
       <ToastContainer 
         position="top-right"
         autoClose={2000}
