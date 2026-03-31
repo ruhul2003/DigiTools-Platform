@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "name": "Resume Builder Pro",
+    "description": "Create professional resumes with modern templates and ATS optimization.",
+    "price": 9.99,
+    "period": "monthly",
+    "tag": "popular",
+    "tagType": "popular",
+    "features": [
+      "100+ templates",
+      "ATS optimization",
+      "Export to PDF",
+      "Real-time preview"
+    ],
+    "icon": "FileText"
+  },
+  {
+    "id": 2,
+    "name": "Portfolio Website Kit",
+    "description": "Build stunning personal portfolio websites بسهولة.",
+    "price": 29.99,
+    "period": "one-time",
+    "tag": "best seller",
+    "tagType": "best seller",
+    "features": [
+      "50+ layouts",
+      "Responsive design",
+      "SEO friendly",
+      "Custom domain support"
+    ],
+    "icon": "Globe"
+  },
+  {
+    "id": 3,
+    "name": "Job Tracker",
+    "description": "Track all your job applications in one place.",
+    "price": 4.99,
+    "period": "monthly",
+    "tag": "new",
+    "tagType": "new",
+    "features": [
+      "Application tracking",
+      "Interview reminders",
+      "Status updates",
+      "Notes section"
+    ],
+    "icon": "Briefcase"
+  },
+  {
+    "id": 4,
+    "name": "LinkedIn Booster",
+    "description": "Optimize your LinkedIn profile to attract recruiters.",
+    "price": 14.99,
+    "period": "yearly",
+    "tag": "popular",
+    "tagType": "popular",
+    "features": [
+      "Profile analysis",
+      "Keyword suggestions",
+      "Headline generator",
+      "Growth tips"
+    ],
+    "icon": "Linkedin"
+  },
+  {
+    "id": 5,
+    "name": "Cover Letter AI",
+    "description": "Generate personalized cover letters using AI.",
+    "price": 7.99,
+    "period": "monthly",
+    "tag": "best seller",
+    "tagType": "best seller",
+    "features": [
+      "AI writing",
+      "Multiple templates",
+      "Job-specific customization",
+      "Download options"
+    ],
+    "icon": "PenTool"
+  },
+  {
+    "id": 6,
+    "name": "Skill Assessment",
+    "description": "Test and improve your professional skills.",
+    "price": 19.99,
+    "period": "yearly",
+    "tag": "new",
+    "tagType": "new",
+    "features": [
+      "100+ tests",
+      "Instant results",
+      "Skill reports",
+      "Certification"
+    ],
+    "icon": "CheckCircle"
+  },
+  {
+    "id": 7,
+    "name": "Freelancer Toolkit",
+    "description": "All-in-one toolkit for freelancers to manage work.",
+    "price": 39.99,
+    "period": "one-time",
+    "tag": "popular",
+    "tagType": "popular",
+    "features": [
+      "Invoice generator",
+      "Client management",
+      "Time tracking",
+      "Expense tracking"
+    ],
+    "icon": "Tool"
+  },
+  {
+    "id": 8,
+    "name": "Interview Prep Master",
+    "description": "Prepare for interviews with mock questions and tips.",
+    "price": 11.99,
+    "period": "monthly",
+    "tag": "best seller",
+    "tagType": "best seller",
+    "features": [
+      "Mock interviews",
+      "Common Q&A",
+      "Video practice",
+      "Feedback system"
+    ],
+    "icon": "Mic"
+  }
+]
