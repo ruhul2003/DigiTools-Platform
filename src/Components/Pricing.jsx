@@ -2,7 +2,7 @@ import { IoCheckmark } from "react-icons/io5";
 
 function Pricing() {
     return (
-        <div className="w-full md:w-4/5 mx-auto mt-16 mb-16 px-4">
+        <div className="w-full md:w-4/5 mx-auto mt-32 mb-16 px-4">
     {/* Header Section */}
     <h1 className="text-3xl md:text-5xl text-center font-bold">Simple, Transparent Pricing</h1>
     <p className="mt-4 text-center text-gray-600">Choose the plan that fits your needs. Upgrade or downgrade anytime.</p>
