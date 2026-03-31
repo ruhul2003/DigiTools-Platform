@@ -117,7 +117,7 @@ function Premium({ cartItems, addToCart, removeFromCart, clearCart }) {
               <button
                 onClick={() => handleAddWithToast(item)}
                 className={`mt-6 w-full py-3 rounded-xl text-white font-semibold transition-all 
-                ${cartItems.includes(item.id) ? "bg-green-500 cursor-default" : "bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 active:scale-95 shadow-md shadow-purple-100"}`}
+                ${cartItems.includes(item.id) ? "bg-green-500 cursor-default" : "bg-linear-to-r from-purple-600 to-indigo-600 hover:opacity-90 active:scale-95 shadow-md shadow-purple-100"}`}
               >
                 {cartItems.includes(item.id) ? <span className="flex items-center justify-center gap-2"><FaCheck /> Added to Cart</span> : "Buy Now"}
               </button>

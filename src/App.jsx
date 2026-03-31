@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Steps from './Components/Steps';
 import Pricing from './Components/Pricing';
+import Ready from './Components/Pricing';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -55,6 +56,7 @@ function App() {
       />
       <Steps/>
       <Pricing/>
+      <Ready/>
     </>
   );
 }
