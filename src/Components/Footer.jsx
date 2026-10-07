@@ -1,87 +1,156 @@
-import { FaInstagram } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+"use client";
 
-function Footer() {
-    return (
-        <div className="bg-[#101727] text-white">
-            {/* Main Content Container - responsive width */}
-            <div className="w-full md:w-4/5 mx-auto px-6 py-16">
+import Link from "next/link";
+import { FiLayers, FiGithub, FiTwitter, FiLinkedin, FiDisc, FiCheckCircle } from "react-icons/fi";
+import { FaInstagram, FaFacebook, FaXTwitter } from "react-icons/fa6";
 
-                {/* Grid Wrapper: 1 col (mobile), 2-3 cols (tablet), 5 cols (desktop) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
-                    {/* Brand Section */}
-                    <div className="sm:col-span-2 md:col-span-3 lg:col-span-1">
-                        <h1 className="text-3xl md:text-4xl font-bold">DigiTools</h1>
-                        <p className="text-[#777] mt-4 leading-relaxed max-w-sm">
-                            Premium digital tools for creators, professionals, and businesses.
-                            Work smarter with our suite of powerful tools.
-                        </p>
-                    </div>
+  return (
+    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
+      <div className="w-11/12 max-w-7xl mx-auto pt-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+          {/* Brand Info */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-linear-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white shadow-md">
+                <FiLayers size={20} />
+              </div>
+              <span className="text-2xl font-black tracking-tight text-white">
+                Digi<span className="text-purple-400">Tools</span>
+              </span>
+            </Link>
 
-                    {/* Links - Products */}
-                    <div>
-                        <h1 className="text-[18px] font-semibold">Products</h1>
-                        <ul className="text-[#777] mt-3 flex flex-col gap-2">
-                            <li className="hover:text-white cursor-pointer transition-colors">Features</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Pricing</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Templates</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Integrations</li>
-                        </ul>
-                    </div>
+            <p className="mt-4 text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
+              Curated suite of production-grade digital tools, templates, AI assistants, and automation blueprints built to help creators and teams execute with precision.
+            </p>
 
-                    {/* Links - Company */}
-                    <div>
-                        <h1 className="text-[18px] font-semibold">Company</h1>
-                        <ul className="text-[#777] mt-3 flex flex-col gap-2">
-                            <li className="hover:text-white cursor-pointer transition-colors">About</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Blog</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Careers</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Press</li>
-                        </ul>
-                    </div>
-
-                    {/* Links - Resources */}
-                    <div>
-                        <h1 className="text-[18px] font-semibold">Resources</h1>
-                        <ul className="text-[#777] mt-3 flex flex-col gap-2">
-                            <li className="hover:text-white cursor-pointer transition-colors">Documentation</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Help Center</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Community</li>
-                            <li className="hover:text-white cursor-pointer transition-colors">Contact</li>
-                        </ul>
-                    </div>
-
-                    {/* Social Links */}
-                    <div>
-                        <h2 className="text-[18px] font-semibold">Social Links</h2>
-                        <div className="flex flex-row gap-4 mt-4">
-                            <FaInstagram size={38} className="text-black bg-white p-2 rounded-full hover:bg-purple-600 hover:text-white transition-all cursor-pointer" />
-                            <FaFacebook size={38} className="text-black bg-white p-2 rounded-full hover:bg-blue-600 hover:text-white transition-all cursor-pointer" />
-                            <FaXTwitter size={38} className="text-black bg-white p-2 rounded-full hover:bg-gray-800 hover:text-white transition-all cursor-pointer" />
-                        </div>
-                    </div>
-                </div>
-
-                {/* Horizontal Rule */}
-                <hr className="border-[#333]" />
-
-                {/* Bottom Bar: Stacked on mobile, side-by-side on tablet+ */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8">
-                    <div className="text-center md:text-left text-[#777] text-sm">
-                        © 2026 DigiTools Platform. All rights reserved.
-                    </div>
-
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-10 items-center text-sm text-[#777]">
-                        <p className="hover:text-white cursor-pointer transition-colors">Privacy Policy</p>
-                        <p className="hover:text-white cursor-pointer transition-colors">Terms of Service</p>
-                        <p className="hover:text-white cursor-pointer transition-colors">Cookies</p>
-                    </div>
-                </div>
+            {/* System Status indicator */}
+            <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-[11px] text-emerald-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>All Systems Operational • 99.98% Uptime</span>
             </div>
-        </div>
-    );
-}
+          </div>
 
-export default Footer;
+          {/* Catalog Columns */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
+              Products
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              <li>
+                <Link href="/#products" className="hover:text-purple-400 transition-colors">
+                  AI Writing Assistant
+                </Link>
+              </li>
+              <li>
+                <Link href="/#products" className="hover:text-purple-400 transition-colors">
+                  Design Templates Pack
+                </Link>
+              </li>
+              <li>
+                <Link href="/#products" className="hover:text-purple-400 transition-colors">
+                  Automation Blueprint OS
+                </Link>
+              </li>
+              <li>
+                <Link href="/#products" className="hover:text-purple-400 transition-colors">
+                  ATS Resume Builder
+                </Link>
+              </li>
+              <li>
+                <Link href="/playground" className="text-purple-400 hover:text-purple-300 transition-colors font-semibold">
+                  Interactive Playground →
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
+              Platform
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              <li>
+                <Link href="/#pricing" className="hover:text-purple-400 transition-colors">
+                  Pricing Plans
+                </Link>
+              </li>
+              <li>
+                <Link href="/#testimonials" className="hover:text-purple-400 transition-colors">
+                  Customer Reviews
+                </Link>
+              </li>
+              <li>
+                <Link href="/#faq" className="hover:text-purple-400 transition-colors">
+                  Frequently Asked Questions
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-purple-400 transition-colors">
+                  Contact Support
+                </Link>
+              </li>
+              <li>
+                <span className="text-slate-500 cursor-not-allowed">
+                  Affiliate Program (Soon)
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Socials & Community */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
+              Community
+            </h4>
+            <p className="text-xs text-slate-400 mb-4">
+              Connect with 50k+ creators, share tips, and vote on upcoming tools.
+            </p>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Twitter"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-purple-600 hover:text-white transition-colors"
+              >
+                <FaXTwitter size={15} />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-pink-600 hover:text-white transition-colors"
+              >
+                <FaInstagram size={15} />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-blue-600 hover:text-white transition-colors"
+              >
+                <FaFacebook size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <p>© {currentYear} DigiTools Platform. Engineered for high-velocity creators.</p>
+          <div className="flex items-center gap-6">
+            <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
+            <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
+            <span className="hover:text-slate-400 cursor-pointer">Commercial Licensing</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
