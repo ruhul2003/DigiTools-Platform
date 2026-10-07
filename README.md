@@ -1,20 +1,82 @@
-🚀 DigiTools Platform
-Empowering creators with premium digital solutions. DigiTools is a modern, high-performance web platform built to provide instant access to a curated suite of digital tools. From AI writing assistants to professional design templates, we help you bridge the gap between idea and execution.
+# 🚀 DigiTools Platform — Next.js Enterprise Edition
 
-🛠️ Tech Stack
+Empowering creators, engineers, and digital agencies with premium digital solutions. DigiTools is a modern, high-performance web platform built to provide instant access to a curated suite of digital assets, AI writing assistants, automation blueprints, and professional design templates.
+
+---
+
+## 🛠️ Architecture & Tech Stack
+
 Built with a focus on speed, developer experience, and modern UI/UX standards:
 
-Frontend Framework: React JS
+- **Framework**: [Next.js](https://nextjs.org/) (App Router, Server & Client Components, Turbopack)
+- **Runtime**: React 19
+- **Styling**: Modern Tailwind CSS & PostCSS
+- **State Management**: React Context (`ThemeContext`, `CartContext`, `WishlistContext`) with LocalStorage synchronization
+- **Icons**: React Icons (Lucide, Feather, FontAwesome, Ionicons)
+- **Deployment**: Zero-config static & edge routing ready
 
-Styling: Tailwind CSS , DaisyUI , React Icons
+---
 
+## ✨ Key Capabilities
 
-✨ Key Features
-💎 1. Intelligent Tool Discovery
-Browse a sleek, responsive catalog of premium assets. Each tool is categorized and detailed, allowing users to find exactly what they need—whether it’s AI Writing Pro or Advanced Analytics—in seconds.
+1. **Intelligent Tool Discovery & Catalog**
+   - Live search, category filtering (AI Tools, Design Assets, Automation, Productivity, Career), and price/rating sorting.
+   - Quick View inspection modal with instant cart and wishlist actions.
 
-💳 2. Tiered Subscription Model
-A fully functional pricing architecture featuring Starter, Pro, and Enterprise tiers. Each card is meticulously styled with Tailwind CSS to highlight the "Most Popular" options and include clear, actionable call-to-actions.
+2. **Dynamic Tool Detail Pages (`/tools/[id]`)**
+   - Individual product pages featuring technical specifications, capability lists, high-res previews, and related recommendations.
 
-📱 3. Mobile-First Responsive Design
-Engineered to look stunning on any device. Utilizing Tailwind’s grid and flexbox utilities, the layout seamlessly transitions from a 3-column desktop view to a 2-column tablet layout, and finally a single-column mobile experience.
+3. **Interactive Tool Playground (`/playground`)**
+   - **AI Content Generator**: Live simulated prompt synthesis with tone and speed selectors.
+   - **Palette Studio**: Dynamic hex scheme generator with one-click copy.
+   - **Markdown Lab**: Real-time split-pane markdown renderer.
+   - **Rate Calculator**: Client quote estimator with self-employment tax contingency buffers.
+
+4. **Cart Drawer & Simulated Checkout**
+   - Slide-over drawer with item quantity modifiers and promo discount coupon engine (`DIGI20` for 20% off).
+   - Multi-step simulated checkout with instant order generation and asset bundle dispatch.
+
+5. **Tiered Pricing & Specification Matrix**
+   - Starter ($0), Pro ($29/mo or $23/mo billed annually), and Enterprise ($99/mo).
+   - Side-by-side technical capability comparison table across assets, quotas, and licensing rights.
+
+6. **Light & Dark Theme Switcher**
+   - Universal theme provider with smooth transitions and system preference detection.
+
+7. **Customer Reviews & Testimonials**
+   - Verified creator feedback with live interactive review submission dialog.
+
+8. **Categorized FAQ Accordion**
+   - Searchable, collapsible Q&A covering licensing, file formats, and commercial rights.
+
+9. **Dedicated Contact & Support Route (`/contact`)**
+   - Multi-channel inquiry dispatch form and enterprise support info.
+
+---
+
+## 💻 Getting Started
+
+### Prerequisites
+- Node.js 18.17+ or 20+
+
+### Installation & Development
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm run start
+```
+
+Visit [http://localhost:3000](http://localhost:3000) to explore the DigiTools platform.
+
+---
+
+## 📄 License
+Commercial Safe — DigiTools Platform. All rights reserved.
