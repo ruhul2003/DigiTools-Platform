@@ -1,30 +1,153 @@
-import bannerImg from "../../assets/banner.png";
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import { IoMdRadioButtonOn } from "react-icons/io";
 import { IoPlayOutline } from "react-icons/io5";
+import { FiSearch, FiZap, FiShield, FiArrowRight } from "react-icons/fi";
 
+export default function Banner({ onSearchSubmit }) {
+  const [query, setQuery] = useState("");
+  const [showVideoModal, setShowVideoModal] = useState(false);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (onSearchSubmit) {
+      onSearchSubmit(query);
+    }
+    const elem = document.getElementById("products");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
+  return (
+    <section className="relative overflow-hidden pt-8 pb-16 lg:py-20 border-b border-slate-100 dark:border-slate-800/60 bg-linear-to-b from-purple-50/50 via-transparent to-transparent dark:from-purple-950/10">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-purple-500/10 dark:bg-purple-500/15 blur-3xl pointer-events-none rounded-full" />
 
-function Banner() {
-    return (
-        <div className="bg-[#FBFBFB] w-4/5 mx-auto flex flex-row lg:flex-row items-center justify-between gap-6 py-10 mt-10">
-            <div className="flex flex-col gap-6 max-lg:gap-4">
-                <p className="flex items-center w-fit flex-row gap-2 px-4 py-2 text-[#7823F8] text-[16px] bg-[#dac8f5] rounded-full text-sm font-semibold"> <IoMdRadioButtonOn /> New : AI Powered Tools Are Available</p>
-                <h1 className="text-7xl font-bold mt-6 leading-[1.3] max-lg:text-4xl">Supercharge Your <br /> Digital Workflow</h1>
-                <p className="mt-4 text-[18px] max-lg:text-[16px]">Access premium AI tools, design assets, templates, and productivity 
-                    software—all in one place. Start creating faster and more efficiently. Explore Products.</p>
-                
-                <div className="flex flex-row sm:flex-row gap-4 mt-6">
-                    <button className="bg-[#7823F8] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#6a1bd1] transition-colors">Explore Products</button>
-                    <button className="flex flex-row items-center border border-[#7823F8] text-[#7823F8] px-6 py-3 rounded-full font-semibold hover:bg-[#7823F8] hover:text-white transition-colors"><IoPlayOutline className="mr-2" /> Watch Demo</button>
-                </div>
+      <div className="w-11/12 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+        {/* Left Column: Copy & Actions */}
+        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-950/80 border border-purple-200 dark:border-purple-800 shadow-xs mb-6">
+            <IoMdRadioButtonOn className="animate-pulse text-purple-600 dark:text-purple-400" />
+            <span>Next-Gen Suite • 200+ Production Ready Tools</span>
+          </div>
+
+          {/* Main Title */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            Supercharge Your <br className="hidden sm:inline" />
+            <span className="bg-linear-to-r from-purple-600 via-indigo-600 to-pink-500 bg-clip-text text-transparent">
+              Digital Workflow
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed">
+            Gain immediate access to premium AI writers, vetted automation scripts, conversion-focused design templates, and freelancer kits. Built for professionals who value velocity.
+          </p>
+
+          {/* Quick Search Bar */}
+          <form onSubmit={handleSearch} className="mt-8 w-full max-w-lg relative flex items-center">
+            <div className="absolute left-4 text-slate-400">
+              <FiSearch size={20} />
             </div>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search AI writing, resume builder, templates..."
+              className="w-full pl-12 pr-32 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-900/90 text-sm shadow-lg shadow-purple-500/5 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            />
+            <button
+              type="submit"
+              className="absolute right-2 px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-semibold shadow-md transition-all"
+            >
+              Explore
+            </button>
+          </form>
 
-            <div>
-                <img className="max-sm:hidden" src={bannerImg} alt="Banner Image" />
-            </div>
+          {/* Call to Actions */}
+          <div className="flex flex-wrap items-center gap-4 mt-8">
+            <a
+              href="#products"
+              className="inline-flex items-center gap-2 bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-7 py-3.5 rounded-2xl shadow-lg shadow-purple-500/25 active:scale-95 transition-all text-sm"
+            >
+              Browse Catalog <FiArrowRight />
+            </a>
+            <button
+              onClick={() => setShowVideoModal(true)}
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all"
+            >
+              <IoPlayOutline size={20} className="text-purple-600 dark:text-purple-400" />
+              Watch 2-Min Demo
+            </button>
+          </div>
+
+          {/* Trust points */}
+          <div className="flex items-center gap-6 mt-8 pt-6 border-t border-slate-200/80 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
+            <span className="flex items-center gap-1.5">
+              <FiZap className="text-amber-500" /> Instant Cloud Access
+            </span>
+            <span className="flex items-center gap-1.5">
+              <FiShield className="text-emerald-500" /> Commercial Safe License
+            </span>
+          </div>
         </div>
-    )
-}
 
-export default Banner;
+        {/* Right Column: Visual Showcase */}
+        <div className="flex-1 w-full max-w-lg lg:max-w-none relative">
+          <div className="relative mx-auto w-full rounded-3xl p-3 bg-linear-to-br from-purple-200/50 via-indigo-100/30 to-transparent dark:from-purple-900/30 dark:via-slate-800/40 dark:to-transparent border border-purple-200/60 dark:border-purple-800/40 shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-slate-900 aspect-4/3 flex items-center justify-center">
+              <Image
+                src="/assets/banner.png"
+                alt="DigiTools Dashboard Showcase"
+                width={650}
+                height={480}
+                priority
+                className="w-full h-full object-contain p-4 hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            
+            {/* Floating Highlight Tag */}
+            <div className="absolute -bottom-4 -left-4 sm:bottom-4 sm:left-4 glass-panel px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-3">
+              <span className="w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
+              <div>
+                <p className="text-xs font-bold text-slate-900 dark:text-white">50+ New Assets Added</p>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400">Updated for this release</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Video Modal Demo */}
+      {showVideoModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-3xl w-full p-6 border border-slate-200 dark:border-slate-800 relative shadow-2xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Platform Walkthrough Demo</h3>
+              <button
+                onClick={() => setShowVideoModal(false)}
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold"
+              >
+                Close ✕
+              </button>
+            </div>
+            <div className="aspect-video w-full bg-slate-950 rounded-2xl flex flex-col items-center justify-center text-white p-8 text-center relative overflow-hidden">
+              <div className="w-16 h-16 rounded-full bg-purple-600/90 flex items-center justify-center mb-4 cursor-pointer shadow-xl shadow-purple-500/50 hover:scale-110 transition-transform">
+                <IoPlayOutline size={32} className="ml-1" />
+              </div>
+              <p className="text-sm font-semibold">Interactive Platform Overview</p>
+              <p className="text-xs text-slate-400 mt-1 max-w-md">
+                Discover how DigiTools streamlines your creative workflow from ideation to final client delivery.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
