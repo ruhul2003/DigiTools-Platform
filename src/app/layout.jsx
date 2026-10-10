@@ -8,6 +8,7 @@ import Footer from "../Components/Footer";
 import CartDrawer from "../Components/CartDrawer";
 import CheckoutModal from "../Components/CheckoutModal";
 import CommandPalette from "../Components/CommandPalette";
+import CompareFloatingBar from "../Components/CompareFloatingBar";
 
 export const metadata = {
   title: "DigiTools Platform — Premium Digital Assets, AI Tools & Templates",
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
                   {children}
                 </main>
                 <CommandPalette />
+                <CompareFloatingBar />
                 <CartDrawer />
                 <CheckoutModal />
                 <Footer />
