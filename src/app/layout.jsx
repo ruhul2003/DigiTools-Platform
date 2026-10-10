@@ -7,6 +7,7 @@ import Navbar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import CartDrawer from "../Components/CartDrawer";
 import CheckoutModal from "../Components/CheckoutModal";
+import CommandPalette from "../Components/CommandPalette";
 
 export const metadata = {
   title: "DigiTools Platform — Premium Digital Assets, AI Tools & Templates",
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
                 <main className="flex-1">
                   {children}
                 </main>
+                <CommandPalette />
                 <CartDrawer />
                 <CheckoutModal />
                 <Footer />
