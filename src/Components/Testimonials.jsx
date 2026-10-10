@@ -1,15 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FiStar, FiCheckCircle, FiEdit3, FiX } from "react-icons/fi";
+import { FiStar, FiCheckCircle, FiEdit3, FiX, FiFilter } from "react-icons/fi";
 import { initialTestimonials } from "../data/testimonialsData";
 import { useCart } from "../context/CartContext";
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState(initialTestimonials);
+  const [ratingFilter, setRatingFilter] = useState("all");
   const [showReviewModal, setShowReviewModal] = useState(false);
   const { showToast } = useCart();
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("digitools_testimonials");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setReviews(parsed);
+        }
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -36,7 +51,14 @@ export default function Testimonials() {
       content: formData.content,
     };
 
-    setReviews([newReview, ...reviews]);
+    const updated = [newReview, ...reviews];
+    setReviews(updated);
+    try {
+      localStorage.setItem("digitools_testimonials", JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+
     setShowReviewModal(false);
     showToast("Thank you for your feedback! Review published.", "success");
     setFormData({
@@ -49,10 +71,14 @@ export default function Testimonials() {
     });
   };
 
+  const filteredReviews = ratingFilter === "all"
+    ? reviews
+    : reviews.filter((r) => r.rating === Number(ratingFilter));
+
   return (
-    <section id="testimonials" className="py-20 w-11/12 max-w-7xl mx-auto scroll-mt-20">
+    <section id="testimonials" className="py-20 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 scroll-mt-20">
       {/* Header */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-8">
         <div>
           <span className="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-200/60 dark:border-purple-800/60">
             Real Feedback
@@ -67,15 +93,48 @@ export default function Testimonials() {
 
         <button
           onClick={() => setShowReviewModal(true)}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs shadow-md shadow-purple-500/20 active:scale-95 transition-all"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs shadow-md shadow-purple-500/20 active:scale-95 transition-all cursor-pointer"
         >
           <FiEdit3 size={15} /> Write a Review
         </button>
       </div>
 
+      {/* Filter Tabs */}
+      <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2">
+        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 mr-2 flex items-center gap-1.5 shrink-0">
+          <FiFilter size={13} /> Filter:
+        </span>
+        {[
+          { label: "All Reviews", value: "all", count: reviews.length },
+          { label: "5-Star Rating", value: "5", count: reviews.filter((r) => r.rating === 5).length },
+          { label: "4-Star Rating", value: "4", count: reviews.filter((r) => r.rating === 4).length },
+        ].map((tab) => (
+          <button
+            key={tab.value}
+            onClick={() => setRatingFilter(tab.value)}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer shrink-0 border ${
+              ratingFilter === tab.value
+                ? "bg-purple-600 text-white border-purple-600 shadow-xs"
+                : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+            }`}
+          >
+            {tab.label}{" "}
+            <span
+              className={`text-[10px] ml-1 px-1.5 py-0.5 rounded-full ${
+                ratingFilter === tab.value
+                  ? "bg-white/20 text-white"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-500"
+              }`}
+            >
+              {tab.count}
+            </span>
+          </button>
+        ))}
+      </div>
+
       {/* Testimonials Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {reviews.map((item) => (
+        {filteredReviews.map((item) => (
           <div
             key={item.id}
             className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 p-6 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-purple-300 dark:hover:border-purple-800 transition-all duration-300"
