@@ -32,10 +32,39 @@ export function WishlistProvider({ children }) {
     });
   };
 
+  const removeFromWishlist = (productId) => {
+    setWishlist((prev) => {
+      const next = prev.filter((id) => id !== productId);
+      try {
+        localStorage.setItem("digitools_wishlist", JSON.stringify(next));
+      } catch {
+        // Ignore
+      }
+      return next;
+    });
+  };
+
+  const clearWishlist = () => {
+    setWishlist([]);
+    try {
+      localStorage.removeItem("digitools_wishlist");
+    } catch {
+      // Ignore
+    }
+  };
+
   const isInWishlist = (productId) => wishlist.includes(productId);
 
   return (
-    <WishlistContext.Provider value={{ wishlist, toggleWishlist, isInWishlist }}>
+    <WishlistContext.Provider
+      value={{
+        wishlist,
+        toggleWishlist,
+        removeFromWishlist,
+        clearWishlist,
+        isInWishlist,
+      }}
+    >
       {children}
     </WishlistContext.Provider>
   );
