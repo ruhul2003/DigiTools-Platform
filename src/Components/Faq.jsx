@@ -30,7 +30,7 @@ export default function Faq() {
   }, [activeCategory, searchQuery]);
 
   return (
-    <section id="faq" className="py-20 w-11/12 max-w-5xl mx-auto scroll-mt-20">
+    <section id="faq" className="py-20 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 scroll-mt-20">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-10">
         <span className="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-200/60 dark:border-purple-800/60">
