@@ -1,5 +1,6 @@
 import "./globals.css";
 import { ThemeProvider } from "../context/ThemeContext";
+import { CurrencyProvider } from "../context/CurrencyContext";
 import { CartProvider } from "../context/CartContext";
 import { WishlistProvider } from "../context/WishlistContext";
 import Navbar from "../Components/NavBar";
@@ -24,17 +25,19 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased selection:bg-purple-500 selection:text-white">
         <ThemeProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <Navbar />
-              <main className="flex-1">
-                {children}
-              </main>
-              <CartDrawer />
-              <CheckoutModal />
-              <Footer />
-            </WishlistProvider>
-          </CartProvider>
+          <CurrencyProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <Navbar />
+                <main className="flex-1">
+                  {children}
+                </main>
+                <CartDrawer />
+                <CheckoutModal />
+                <Footer />
+              </WishlistProvider>
+            </CartProvider>
+          </CurrencyProvider>
         </ThemeProvider>
       </body>
     </html>
