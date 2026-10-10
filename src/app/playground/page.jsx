@@ -143,96 +143,96 @@ export default function PlaygroundPage() {
   };
 
   return (
-    <div className="py-12 w-11/12 max-w-7xl mx-auto">
+    <div className="py-12 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 min-h-[80vh]">
       {/* Playground Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-10">
         <span className="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-200/60 dark:border-purple-800/60">
           Live Interactive Sandbox
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mt-4 tracking-tight">
           DigiTools Live Playground
         </h1>
-        <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-          Test interactive utilities directly in your browser. From neural text synthesis to color palette generators and freelance quoting calculators.
+        <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
+          Test interactive utilities directly in your browser. From neural text synthesis and vector icon customization to SEO meta tags and JSON validators.
         </p>
 
         {/* Tab Controls */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 max-w-fit mx-auto">
           <button
             onClick={() => setActiveTool("ai-writer")}
-            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               activeTool === "ai-writer"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
-            <FiCpu /> AI Copy Generator
+            <FiCpu /> AI Copy
           </button>
           <button
             onClick={() => setActiveTool("color-palette")}
-            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               activeTool === "color-palette"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <FiDroplet /> Palette Studio
           </button>
           <button
             onClick={() => setActiveTool("markdown")}
-            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               activeTool === "markdown"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <FiFileText /> Markdown Lab
           </button>
           <button
             onClick={() => setActiveTool("rate-calc")}
-            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               activeTool === "rate-calc"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <FiDollarSign /> Rate Calculator
           </button>
           <button
             onClick={() => setActiveTool("svg-studio")}
-            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               activeTool === "svg-studio"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
-            <FiCode /> SVG Icon Studio
+            <FiCode /> SVG Studio
           </button>
           <button
             onClick={() => setActiveTool("meta-tags")}
-            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               activeTool === "meta-tags"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
-            <FiShare2 /> Meta Tag Studio
+            <FiShare2 /> Meta Tags
           </button>
           <button
             onClick={() => setActiveTool("json-formatter")}
-            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               activeTool === "json-formatter"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
-            <FiTerminal /> JSON Formatter
+            <FiTerminal /> JSON Lab
           </button>
         </div>
       </div>
 
       {/* Main Interactive Screen */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xs">
         {/* TOOL 1: AI COPYWRITER */}
         {activeTool === "ai-writer" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
