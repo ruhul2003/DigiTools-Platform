@@ -5,7 +5,7 @@ import ToolCard from "./ToolCard";
 import QuickViewModal from "./QuickViewModal";
 import { toolsData, categoriesList } from "../data/toolsData";
 import { useWishlist } from "../context/WishlistContext";
-import { FiSearch, FiSliders, FiHeart, FiRefreshCw } from "react-icons/fi";
+import { FiSearch, FiSliders, FiHeart, FiRefreshCw, FiGrid, FiList } from "react-icons/fi";
 
 export default function Catalog({ initialSearch = "" }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -13,6 +13,7 @@ export default function Catalog({ initialSearch = "" }) {
   const [sortBy, setSortBy] = useState("popular");
   const [onlyWishlist, setOnlyWishlist] = useState(false);
   const [quickViewTool, setQuickViewTool] = useState(null);
+  const [viewMode, setViewMode] = useState("grid"); // "grid" | "list"
 
   const { wishlist } = useWishlist();
 
@@ -45,9 +46,9 @@ export default function Catalog({ initialSearch = "" }) {
   }, [selectedCategory, searchQuery, sortBy, onlyWishlist, wishlist]);
 
   return (
-    <section id="products" className="py-20 w-11/12 max-w-7xl mx-auto scroll-mt-20">
+    <section id="products" className="py-20 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 scroll-mt-20">
       {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-12">
         <span className="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-200/60 dark:border-purple-800/60">
           Curated Catalog
         </span>
@@ -78,7 +79,7 @@ export default function Catalog({ initialSearch = "" }) {
           ))}
         </div>
 
-        {/* Controls Row: Search, Wishlist Toggle, Sort By */}
+        {/* Controls Row: Search, Wishlist Toggle, Sort By & View Mode */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-100 dark:border-slate-800/80">
           {/* Search box */}
           <div className="relative w-full sm:w-72">
@@ -92,7 +93,7 @@ export default function Catalog({ initialSearch = "" }) {
             />
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-end flex-wrap">
             {/* Wishlist only toggle */}
             <button
               onClick={() => setOnlyWishlist(!onlyWishlist)}
@@ -119,6 +120,34 @@ export default function Catalog({ initialSearch = "" }) {
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
               </select>
+            </div>
+
+            {/* View Mode Toggle: Grid vs List */}
+            <div className="flex items-center p-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`p-1.5 rounded-lg text-xs transition-colors ${
+                  viewMode === "grid"
+                    ? "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-2xs"
+                    : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                }`}
+                title="Grid View"
+                aria-label="Grid View"
+              >
+                <FiGrid size={15} />
+              </button>
+              <button
+                onClick={() => setViewMode("list")}
+                className={`p-1.5 rounded-lg text-xs transition-colors ${
+                  viewMode === "list"
+                    ? "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-2xs"
+                    : "text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                }`}
+                title="List View"
+                aria-label="List View"
+              >
+                <FiList size={15} />
+              </button>
             </div>
           </div>
         </div>
