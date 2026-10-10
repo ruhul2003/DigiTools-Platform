@@ -14,6 +14,8 @@ export default function Catalog({ initialSearch = "" }) {
   const [onlyWishlist, setOnlyWishlist] = useState(false);
   const [quickViewTool, setQuickViewTool] = useState(null);
   const [viewMode, setViewMode] = useState("grid"); // "grid" | "list"
+  const [maxPrice, setMaxPrice] = useState(100);
+  const [minRating, setMinRating] = useState(0);
 
   const { wishlist } = useWishlist();
 
@@ -34,7 +36,13 @@ export default function Catalog({ initialSearch = "" }) {
         // Wishlist filter
         const matchWishlist = !onlyWishlist || wishlist.includes(tool.id);
 
-        return matchCategory && matchSearch && matchWishlist;
+        // Price filter
+        const matchPrice = maxPrice >= 100 || tool.price <= maxPrice;
+
+        // Rating filter
+        const matchRating = minRating === 0 || tool.rating >= minRating;
+
+        return matchCategory && matchSearch && matchWishlist && matchPrice && matchRating;
       })
       .sort((a, b) => {
         if (sortBy === "price-low") return a.price - b.price;
@@ -43,7 +51,7 @@ export default function Catalog({ initialSearch = "" }) {
         // Default: popular (by reviewCount)
         return b.reviewCount - a.reviewCount;
       });
-  }, [selectedCategory, searchQuery, sortBy, onlyWishlist, wishlist]);
+  }, [selectedCategory, searchQuery, sortBy, onlyWishlist, wishlist, maxPrice, minRating]);
 
   return (
     <section id="products" className="py-20 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 scroll-mt-20">
@@ -149,6 +157,63 @@ export default function Catalog({ initialSearch = "" }) {
                 <FiList size={15} />
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* Secondary Filter & Results Info Row */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+          <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            {/* Price slider */}
+            <div className="flex items-center gap-2">
+              <span className="text-slate-500 font-medium">Max Price:</span>
+              <input
+                type="range"
+                min={15}
+                max={100}
+                step={5}
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(Number(e.target.value))}
+                className="w-24 accent-purple-600 cursor-pointer"
+              />
+              <span className="font-bold text-slate-800 dark:text-slate-200 min-w-8">
+                {maxPrice >= 100 ? "All" : `$${maxPrice}`}
+              </span>
+            </div>
+
+            {/* Rating selector */}
+            <div className="flex items-center gap-2">
+              <span className="text-slate-500 font-medium">Min Rating:</span>
+              <select
+                value={minRating}
+                onChange={(e) => setMinRating(Number(e.target.value))}
+                className="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300"
+              >
+                <option value={0}>All Stars</option>
+                <option value={4.8}>★ 4.8 & Above</option>
+                <option value={4.9}>★ 4.9 Top Rated</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Results Counter & Active Filter Reset */}
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+            <span className="text-slate-500 font-medium">
+              Showing <span className="font-bold text-slate-900 dark:text-white">{filteredTools.length}</span> of {toolsData.length} tools
+            </span>
+            {(selectedCategory !== "All" || searchQuery || onlyWishlist || maxPrice < 100 || minRating > 0) && (
+              <button
+                onClick={() => {
+                  setSelectedCategory("All");
+                  setSearchQuery("");
+                  setOnlyWishlist(false);
+                  setMaxPrice(100);
+                  setMinRating(0);
+                }}
+                className="text-[11px] text-purple-600 dark:text-purple-400 font-bold hover:underline"
+              >
+                Clear all filters
+              </button>
+            )}
           </div>
         </div>
       </div>
