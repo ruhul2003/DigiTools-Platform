@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiCheck, FiMinus, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { useCurrency } from "../context/CurrencyContext";
 
 const comparisonData = [
   {
@@ -44,9 +45,10 @@ const comparisonData = [
 
 export default function ComparisonMatrix() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { formatPrice } = useCurrency();
 
   return (
-    <section className="py-12 w-11/12 max-w-7xl mx-auto">
+    <section className="py-12 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xs">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div>
@@ -59,7 +61,7 @@ export default function ComparisonMatrix() {
           </div>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             {isExpanded ? (
               <>
@@ -79,11 +81,11 @@ export default function ComparisonMatrix() {
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 uppercase tracking-wider font-semibold">
                   <th className="py-4 pr-6 w-1/3">Capability</th>
-                  <th className="py-4 px-4 text-center">Starter ($0)</th>
+                  <th className="py-4 px-4 text-center">Starter ({formatPrice(0)})</th>
                   <th className="py-4 px-4 text-center text-purple-600 dark:text-purple-400 font-bold bg-purple-50/50 dark:bg-purple-950/20 rounded-t-xl">
-                    Pro ($29)
+                    Pro ({formatPrice(29)})
                   </th>
-                  <th className="py-4 px-4 text-center">Enterprise ($99)</th>
+                  <th className="py-4 px-4 text-center">Enterprise ({formatPrice(99)})</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">

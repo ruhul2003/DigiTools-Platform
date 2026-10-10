@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { FiCheck, FiZap, FiArrowRight } from "react-icons/fi";
 import { useCart } from "../context/CartContext";
+import { useCurrency } from "../context/CurrencyContext";
 
 export default function Pricing() {
   const [billingCycle, setBillingCycle] = useState("monthly"); // "monthly" or "annual"
   const { showToast, setIsCheckoutOpen } = useCart();
+  const { formatPrice } = useCurrency();
 
   const isAnnual = billingCycle === "annual";
 
@@ -16,9 +18,9 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-20 w-11/12 max-w-7xl mx-auto scroll-mt-20">
+    <section id="pricing" className="py-20 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 scroll-mt-20">
       {/* Header */}
-      <div className="text-center max-w-2xl mx-auto mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-12">
         <span className="text-xs font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-200/60 dark:border-purple-800/60">
           Flexible Subscriptions
         </span>
@@ -71,7 +73,7 @@ export default function Pricing() {
             </p>
 
             <div className="mt-6 flex items-baseline gap-1">
-              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">$0</span>
+              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{formatPrice(0)}</span>
               <span className="text-xs text-slate-500 font-medium">/month forever</span>
             </div>
 
@@ -129,10 +131,10 @@ export default function Pricing() {
 
             <div className="mt-6 flex items-baseline gap-1.5">
               <span className="text-4xl font-extrabold text-white">
-                ${isAnnual ? 23 : 29}
+                {formatPrice(isAnnual ? 23 : 29)}
               </span>
               <span className="text-xs text-purple-200 font-medium">
-                /month {isAnnual && "(billed $276/yr)"}
+                /month {isAnnual && `(billed ${formatPrice(276)}/yr)`}
               </span>
             </div>
 
@@ -181,10 +183,10 @@ export default function Pricing() {
 
             <div className="mt-6 flex items-baseline gap-1.5">
               <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
-                ${isAnnual ? 79 : 99}
+                {formatPrice(isAnnual ? 79 : 99)}
               </span>
               <span className="text-xs text-slate-500 font-medium">
-                /month {isAnnual && "(billed $948/yr)"}
+                /month {isAnnual && `(billed ${formatPrice(948)}/yr)`}
               </span>
             </div>
 
