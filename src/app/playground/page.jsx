@@ -16,6 +16,8 @@ import {
   FiStar,
   FiCompass,
   FiCode,
+  FiShare2,
+  FiGlobe,
 } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
 
@@ -91,6 +93,14 @@ export default function PlaygroundPage() {
   const [iconRadius, setIconRadius] = useState(16);
   const [iconRotation, setIconRotation] = useState(0);
 
+  // 6. Social Media Meta Tag Generator State
+  const [metaTitle, setMetaTitle] = useState("DigiTools Platform — Curated Digital Assets & AI Tools");
+  const [metaDescription, setMetaDescription] = useState("Access 200+ vetted software tools, automation blueprints, and UI kits engineered for high-velocity creators and teams.");
+  const [metaUrl, setMetaUrl] = useState("https://digitools.io");
+  const [metaImage, setMetaImage] = useState("https://digitools.io/assets/banner.png");
+  const [metaAuthor, setMetaAuthor] = useState("@digitools");
+  const [previewSocial, setPreviewSocial] = useState("google"); // "google" | "twitter" | "facebook"
+
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -163,6 +173,16 @@ export default function PlaygroundPage() {
             }`}
           >
             <FiCode /> SVG Icon Studio
+          </button>
+          <button
+            onClick={() => setActiveTool("meta-tags")}
+            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+              activeTool === "meta-tags"
+                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
+                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+            }`}
+          >
+            <FiShare2 /> Meta Tag Studio
           </button>
         </div>
       </div>
@@ -610,6 +630,188 @@ export default function PlaygroundPage() {
                   className="w-full sm:w-1/2 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 >
                   <FiCode /> Copy React JSX
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TOOL 6: META TAG & OPENGRAPH STUDIO */}
+        {activeTool === "meta-tags" && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <FiShare2 className="text-purple-600" /> SEO & Social Meta Tag Generator
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Configure your social cards, preview live appearances on Google, Twitter, and LinkedIn, and copy validated HTML markup.
+              </p>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  Page Title (Max 60 chars)
+                </label>
+                <input
+                  type="text"
+                  value={metaTitle}
+                  onChange={(e) => setMetaTitle(e.target.value)}
+                  placeholder="Page title for SEO and social shares..."
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  Meta Description (Max 160 chars)
+                </label>
+                <textarea
+                  rows={3}
+                  value={metaDescription}
+                  onChange={(e) => setMetaDescription(e.target.value)}
+                  placeholder="Detailed summary shown in search results and social cards..."
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Canonical Page URL
+                  </label>
+                  <input
+                    type="url"
+                    value={metaUrl}
+                    onChange={(e) => setMetaUrl(e.target.value)}
+                    placeholder="https://yourdomain.com"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Twitter Creator Handle
+                  </label>
+                  <input
+                    type="text"
+                    value={metaAuthor}
+                    onChange={(e) => setMetaAuthor(e.target.value)}
+                    placeholder="@handle"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  OpenGraph Image URL (1200x630 recommended)
+                </label>
+                <input
+                  type="url"
+                  value={metaImage}
+                  onChange={(e) => setMetaImage(e.target.value)}
+                  placeholder="https://yourdomain.com/og-image.png"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono"
+                />
+              </div>
+            </div>
+
+            {/* Right: Live Preview & HTML Code */}
+            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/40 p-6 flex flex-col justify-between">
+              <div>
+                {/* Platform tabs */}
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700 mb-5">
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                    Live Preview
+                  </span>
+                  <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-200/60 dark:bg-slate-800 text-[11px] font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => setPreviewSocial("google")}
+                      className={`px-2.5 py-1 rounded-lg transition-colors ${
+                        previewSocial === "google"
+                          ? "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-2xs"
+                          : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                      }`}
+                    >
+                      Google
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPreviewSocial("twitter")}
+                      className={`px-2.5 py-1 rounded-lg transition-colors ${
+                        previewSocial === "twitter"
+                          ? "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-2xs"
+                          : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                      }`}
+                    >
+                      Twitter / X
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setPreviewSocial("facebook")}
+                      className={`px-2.5 py-1 rounded-lg transition-colors ${
+                        previewSocial === "facebook"
+                          ? "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-2xs"
+                          : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+                      }`}
+                    >
+                      LinkedIn
+                    </button>
+                  </div>
+                </div>
+
+                {/* Card Mockup */}
+                {previewSocial === "google" && (
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1 shadow-xs">
+                    <p className="text-[11px] text-slate-400 truncate">{metaUrl}</p>
+                    <h4 className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer truncate">
+                      {metaTitle}
+                    </h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+                      {metaDescription}
+                    </p>
+                  </div>
+                )}
+
+                {previewSocial === "twitter" && (
+                  <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+                    <div className="h-36 bg-linear-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white text-xs font-semibold p-4 text-center">
+                      <FiGlobe size={24} className="mr-2" />
+                      <span>{metaTitle}</span>
+                    </div>
+                    <div className="p-3.5 space-y-1">
+                      <p className="text-[10px] text-slate-400 uppercase font-mono">{metaUrl.replace("https://", "")}</p>
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">{metaTitle}</h4>
+                      <p className="text-[11px] text-slate-500 line-clamp-2">{metaDescription}</p>
+                    </div>
+                  </div>
+                )}
+
+                {previewSocial === "facebook" && (
+                  <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+                    <div className="h-36 bg-slate-800 flex items-center justify-center text-white text-xs p-4 text-center">
+                      <FiShare2 size={24} className="mr-2 text-purple-400" />
+                      <span>{metaTitle}</span>
+                    </div>
+                    <div className="p-3.5 space-y-1 bg-slate-50 dark:bg-slate-800/60">
+                      <p className="text-[10px] text-slate-400 uppercase font-semibold">{metaUrl.replace("https://", "")}</p>
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">{metaTitle}</h4>
+                      <p className="text-[11px] text-slate-500 line-clamp-2">{metaDescription}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* One Click Copy HTML Button */}
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const htmlCode = `<!-- Primary Meta Tags -->\n<title>${metaTitle}</title>\n<meta name="title" content="${metaTitle}">\n<meta name="description" content="${metaDescription}">\n\n<!-- Open Graph / Facebook -->\n<meta property="og:type" content="website">\n<meta property="og:url" content="${metaUrl}">\n<meta property="og:title" content="${metaTitle}">\n<meta property="og:description" content="${metaDescription}">\n<meta property="og:image" content="${metaImage}">\n\n<!-- Twitter -->\n<meta property="twitter:card" content="summary_large_image">\n<meta property="twitter:url" content="${metaUrl}">\n<meta property="twitter:title" content="${metaTitle}">\n<meta property="twitter:description" content="${metaDescription}">\n<meta property="twitter:image" content="${metaImage}">\n<meta name="twitter:creator" content="${metaAuthor}">`;
+                    copyToClipboard(htmlCode);
+                  }}
+                  className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+                >
+                  <FiCopy /> Copy HTML Meta Tags
                 </button>
               </div>
             </div>
