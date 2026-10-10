@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { FiX, FiTrash2, FiPlus, FiMinus, FiTag, FiShoppingBag, FiArrowRight } from "react-icons/fi";
 import { useCart } from "../context/CartContext";
+import { useCurrency } from "../context/CurrencyContext";
 
 export default function CartDrawer() {
   const {
@@ -21,6 +22,7 @@ export default function CartDrawer() {
     applyCoupon,
     setIsCheckoutOpen,
   } = useCart();
+  const { formatPrice } = useCurrency();
 
   const [inputCoupon, setInputCoupon] = useState("");
 
@@ -106,7 +108,7 @@ export default function CartDrawer() {
                       {item.name}
                     </h4>
                     <p className="text-xs text-purple-600 dark:text-purple-400 font-semibold mt-0.5">
-                      ${item.price} <span className="text-[10px] text-slate-400 font-normal">/{item.period}</span>
+                      {formatPrice(item.price)} <span className="text-[10px] text-slate-400 font-normal">/{item.period}</span>
                     </p>
 
                     {/* Quantity Selector */}
@@ -168,7 +170,7 @@ export default function CartDrawer() {
               {appliedCoupon && (
                 <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs">
                   <span>Coupon &quot;{appliedCoupon}&quot; active ({discountPercent}% off)</span>
-                  <span className="font-bold">-${discountAmount}</span>
+                  <span className="font-bold">-{formatPrice(discountAmount)}</span>
                 </div>
               )}
 
@@ -176,21 +178,21 @@ export default function CartDrawer() {
               <div className="space-y-1.5 text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="text-slate-800 dark:text-slate-200 font-semibold">${subtotal}</span>
+                  <span className="text-slate-800 dark:text-slate-200 font-semibold">{formatPrice(subtotal)}</span>
                 </div>
                 {discountAmount > 0 && (
                   <div className="flex justify-between text-emerald-600 font-medium">
                     <span>Discount</span>
-                    <span>-${discountAmount}</span>
+                    <span>-{formatPrice(discountAmount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between">
                   <span>Taxes & Fees</span>
-                  <span className="text-slate-800 dark:text-slate-200 font-semibold">$0.00</span>
+                  <span className="text-slate-800 dark:text-slate-200 font-semibold">{formatPrice(0)}</span>
                 </div>
                 <div className="flex justify-between text-base font-extrabold text-slate-900 dark:text-white pt-2 border-t border-slate-100 dark:border-slate-800">
                   <span>Total Due</span>
-                  <span className="text-purple-600 dark:text-purple-400">${total}</span>
+                  <span className="text-purple-600 dark:text-purple-400">{formatPrice(total)}</span>
                 </div>
               </div>
 
