@@ -492,6 +492,8 @@ export default function PlaygroundPage() {
               </button>
             </div>
           </div>
+        )}
+
         {/* TOOL 5: SVG ICON STUDIO */}
         {activeTool === "svg-studio" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">

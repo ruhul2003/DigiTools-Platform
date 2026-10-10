@@ -70,7 +70,7 @@ export default function CheckoutModal() {
       },
       paymentMethod: "Credit Card (Simulated 256-bit SSL)",
       totalPaid: orderTotalFormatted,
-      currency: currency.code,
+      currency: typeof currency === "object" ? currency?.code : currency,
       itemsPurchased: purchasedSnapshot.map((item) => ({
         name: item.name,
         price: formatPrice(item.price),

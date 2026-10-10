@@ -32,6 +32,16 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+::selection {
+  background-color: rgba(120, 35, 248, 0.2);
+  color: inherit;
+}
+
+.dark ::selection {
+  background-color: rgba(139, 62, 255, 0.35);
+  color: inherit;
+}
+
 /* Custom smooth glassmorphism effects */
 .glass-panel {
   background: rgba(255, 255, 255, 0.8);

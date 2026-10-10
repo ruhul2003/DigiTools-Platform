@@ -10,6 +10,8 @@ export const currencies = {
   GBP: { code: "GBP", symbol: "£", rate: 0.79, label: "GBP (£)" },
 };
 
+export const AVAILABLE_CURRENCIES = Object.values(currencies);
+
 export function CurrencyProvider({ children }) {
   const [currency, setCurrencyState] = useState("USD");
 

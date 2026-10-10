@@ -22,7 +22,7 @@ export default function Ready() {
   };
 
   return (
-    <section className="py-16 w-11/12 max-w-7xl mx-auto">
+    <section className="py-16 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
       <div className="relative rounded-3xl overflow-hidden bg-linear-to-r from-purple-700 via-indigo-700 to-purple-800 text-white p-8 sm:p-14 lg:p-20 text-center shadow-2xl shadow-purple-900/30">
         {/* Glow ambient background effect */}
         <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-pink-500/20 blur-3xl pointer-events-none" />
