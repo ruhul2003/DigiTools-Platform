@@ -18,6 +18,8 @@ import {
   FiCode,
   FiShare2,
   FiGlobe,
+  FiCheckCircle,
+  FiTerminal,
 } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
 
@@ -101,6 +103,38 @@ export default function PlaygroundPage() {
   const [metaAuthor, setMetaAuthor] = useState("@digitools");
   const [previewSocial, setPreviewSocial] = useState("google"); // "google" | "twitter" | "facebook"
 
+  // 7. JSON Formatter & Validator State
+  const [jsonInput, setJsonInput] = useState(`{\n  "name": "DigiTools Platform",\n  "version": "2.0.0",\n  "tier": "enterprise",\n  "toolsCount": 200,\n  "features": [\n    "Neural Text Synthesis",\n    "Vector Icon Studio",\n    "Webhook Blueprints"\n  ],\n  "active": true\n}`);
+  const [formattedJson, setFormattedJson] = useState("");
+  const [jsonError, setJsonError] = useState(null);
+  const [indentSpaces, setIndentSpaces] = useState(2);
+
+  const handleFormatJson = (spaces = indentSpaces) => {
+    try {
+      const parsed = JSON.parse(jsonInput);
+      const res = JSON.stringify(parsed, null, spaces);
+      setFormattedJson(res);
+      setJsonError(null);
+      showToast("JSON formatted & validated successfully!", "success");
+    } catch (err) {
+      setJsonError(err.message);
+      showToast("Invalid JSON syntax!", "error");
+    }
+  };
+
+  const handleMinifyJson = () => {
+    try {
+      const parsed = JSON.parse(jsonInput);
+      const res = JSON.stringify(parsed);
+      setFormattedJson(res);
+      setJsonError(null);
+      showToast("JSON minified cleanly!", "info");
+    } catch (err) {
+      setJsonError(err.message);
+      showToast("Invalid JSON syntax!", "error");
+    }
+  };
+
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -183,6 +217,16 @@ export default function PlaygroundPage() {
             }`}
           >
             <FiShare2 /> Meta Tag Studio
+          </button>
+          <button
+            onClick={() => setActiveTool("json-formatter")}
+            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+              activeTool === "json-formatter"
+                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
+                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+            }`}
+          >
+            <FiTerminal /> JSON Formatter
           </button>
         </div>
       </div>
@@ -813,6 +857,123 @@ export default function PlaygroundPage() {
                 >
                   <FiCopy /> Copy HTML Meta Tags
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TOOL 7: JSON FORMATTER & VALIDATOR */}
+        {activeTool === "json-formatter" && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <FiTerminal className="text-purple-600" /> JSON Validator & Formatter
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Paste minified or unformatted JSON to validate syntax and prettify.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                    Raw JSON Input
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] text-slate-400">Indent:</span>
+                    <button
+                      type="button"
+                      onClick={() => { setIndentSpaces(2); handleFormatJson(2); }}
+                      className={`px-2 py-0.5 rounded text-[10px] font-bold ${indentSpaces === 2 ? "bg-purple-600 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-500"}`}
+                    >
+                      2 spaces
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => { setIndentSpaces(4); handleFormatJson(4); }}
+                      className={`px-2 py-0.5 rounded text-[10px] font-bold ${indentSpaces === 4 ? "bg-purple-600 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-500"}`}
+                    >
+                      4 spaces
+                    </button>
+                  </div>
+                </div>
+                <textarea
+                  rows={12}
+                  value={jsonInput}
+                  onChange={(e) => {
+                    setJsonInput(e.target.value);
+                    setJsonError(null);
+                  }}
+                  placeholder="Paste JSON payload here..."
+                  className="w-full p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+              </div>
+
+              {jsonError && (
+                <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/40 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-2">
+                  <span>✕ Syntax Error:</span>
+                  <span className="font-mono text-[11px] truncate">{jsonError}</span>
+                </div>
+              )}
+
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleFormatJson()}
+                  className="flex-1 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+                >
+                  <FiCheckCircle /> Validate & Beautify
+                </button>
+                <button
+                  type="button"
+                  onClick={handleMinifyJson}
+                  className="px-5 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs transition-colors"
+                >
+                  Minify
+                </button>
+              </div>
+            </div>
+
+            {/* Right: Formatted Output */}
+            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/40 p-6 flex flex-col justify-between h-full">
+              <div>
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700 mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Formatted Output
+                    </span>
+                    {formattedJson && (
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-[10px] font-bold">
+                        Valid JSON
+                      </span>
+                    )}
+                  </div>
+                  {formattedJson && (
+                    <button
+                      type="button"
+                      onClick={() => copyToClipboard(formattedJson)}
+                      className="text-xs font-semibold text-purple-600 dark:text-purple-400 flex items-center gap-1 hover:underline"
+                    >
+                      <FiCopy /> Copy Output
+                    </button>
+                  )}
+                </div>
+
+                <div className="h-[290px] overflow-y-auto p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-mono text-xs text-slate-800 dark:text-slate-200 whitespace-pre shadow-inner">
+                  {formattedJson || (
+                    <span className="text-slate-400 italic">
+                      Click &ldquo;Validate & Beautify&rdquo; to generate formatted JSON with syntax indentation.
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-[11px] text-slate-400">
+                <span>RFC 8259 Standard Compliant</span>
+                <span>{formattedJson ? `${formattedJson.length} characters` : "Idle"}</span>
               </div>
             </div>
           </div>
