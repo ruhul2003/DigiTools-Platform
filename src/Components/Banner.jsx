@@ -23,76 +23,82 @@ export default function Banner({ onSearchSubmit }) {
   };
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 lg:py-20 border-b border-slate-100 dark:border-slate-800/60 bg-linear-to-b from-purple-50/50 via-transparent to-transparent dark:from-purple-950/10">
+    <section className="relative overflow-hidden pt-8 pb-16 lg:py-24 border-b border-slate-100 dark:border-slate-800/80 bg-linear-to-b from-slate-50/70 via-transparent to-transparent dark:from-slate-900/40">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-purple-500/10 dark:bg-purple-500/15 blur-3xl pointer-events-none rounded-full" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-purple-500/10 dark:bg-purple-500/15 blur-3xl pointer-events-none rounded-full" />
 
-      <div className="w-11/12 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+      <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 relative z-10">
         {/* Left Column: Copy & Actions */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-950/80 border border-purple-200 dark:border-purple-800 shadow-xs mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/80 border border-purple-200/80 dark:border-purple-800/80 shadow-2xs mb-6">
             <IoMdRadioButtonOn className="animate-pulse text-purple-600 dark:text-purple-400" />
-            <span>Next-Gen Suite • 200+ Production Ready Tools</span>
+            <span>Enterprise Suite • 200+ Vetted Software Tools & Blueprints</span>
           </div>
 
           {/* Main Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
             Supercharge Your <br className="hidden sm:inline" />
             <span className="bg-linear-to-r from-purple-600 via-indigo-600 to-pink-500 bg-clip-text text-transparent">
-              Digital Workflow
+              Digital Velocity
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-xl leading-relaxed">
-            Gain immediate access to premium AI writers, vetted automation scripts, conversion-focused design templates, and freelancer kits. Built for professionals who value velocity.
+          <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed font-normal">
+            Gain immediate access to premium AI writers, vetted automation blueprints, conversion-focused design templates, and freelancer operating systems. Clean, minimal, and engineered for velocity.
           </p>
 
           {/* Quick Search Bar */}
-          <form onSubmit={handleSearch} className="mt-8 w-full max-w-lg relative flex items-center">
+          <form onSubmit={handleSearch} className="mt-8 w-full max-w-xl relative flex items-center">
             <div className="absolute left-4 text-slate-400">
-              <FiSearch size={20} />
+              <FiSearch size={18} />
             </div>
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search AI writing, resume builder, templates..."
-              className="w-full pl-12 pr-32 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-900/90 text-sm shadow-lg shadow-purple-500/5 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              placeholder="Search AI writing, blueprints, templates, career kits..."
+              className="w-full pl-11 pr-32 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-800 dark:text-slate-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
             <button
               type="submit"
-              className="absolute right-2 px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-semibold shadow-md transition-all"
+              className="absolute right-2 px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all"
             >
               Explore
             </button>
           </form>
 
           {/* Call to Actions */}
-          <div className="flex flex-wrap items-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center gap-3.5 mt-8">
             <a
               href="#products"
-              className="inline-flex items-center gap-2 bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-7 py-3.5 rounded-2xl shadow-lg shadow-purple-500/25 active:scale-95 transition-all text-sm"
+              className="inline-flex items-center gap-2 bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-6 py-3 rounded-2xl shadow-sm shadow-purple-500/20 active:scale-95 transition-all text-xs sm:text-sm"
             >
               Browse Catalog <FiArrowRight />
             </a>
             <button
               onClick={() => setShowVideoModal(true)}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-all"
             >
-              <IoPlayOutline size={20} className="text-purple-600 dark:text-purple-400" />
+              <IoPlayOutline size={18} className="text-purple-600 dark:text-purple-400" />
               Watch 2-Min Demo
             </button>
+            <Link
+              href="/playground"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-purple-200 dark:border-purple-800/80 bg-purple-50/50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300 font-semibold text-xs sm:text-sm hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-all"
+            >
+              Live Playground →
+            </Link>
           </div>
 
           {/* Trust points */}
           <div className="flex items-center gap-6 mt-8 pt-6 border-t border-slate-200/80 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
             <span className="flex items-center gap-1.5">
-              <FiZap className="text-amber-500" /> Instant Cloud Access
+              <FiZap className="text-amber-500" /> Instant Cloud Dispatch
             </span>
             <span className="flex items-center gap-1.5">
-              <FiShield className="text-emerald-500" /> Commercial Safe License
+              <FiShield className="text-emerald-500" /> Commercial Unlimited License
             </span>
           </div>
         </div>
