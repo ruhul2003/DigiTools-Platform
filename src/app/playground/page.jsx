@@ -10,6 +10,12 @@ import {
   FiCheck,
   FiRefreshCw,
   FiZap,
+  FiLayers,
+  FiShield,
+  FiHeart,
+  FiStar,
+  FiCompass,
+  FiCode,
 } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
 
@@ -76,6 +82,15 @@ export default function PlaygroundPage() {
   const baseTotal = hourlyRate * estimatedHours;
   const recommendedQuote = Math.round(baseTotal * (1 + taxBuffer / 100));
 
+  // 5. SVG Icon Studio State
+  const [iconShape, setIconShape] = useState("zap");
+  const [iconSize, setIconSize] = useState(48);
+  const [strokeWidth, setStrokeWidth] = useState(2);
+  const [iconColor, setIconColor] = useState("#7823F8");
+  const [iconBg, setIconBg] = useState("transparent");
+  const [iconRadius, setIconRadius] = useState(16);
+  const [iconRotation, setIconRotation] = useState(0);
+
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -138,6 +153,16 @@ export default function PlaygroundPage() {
             }`}
           >
             <FiDollarSign /> Rate Calculator
+          </button>
+          <button
+            onClick={() => setActiveTool("svg-studio")}
+            className={`px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all ${
+              activeTool === "svg-studio"
+                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
+                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+            }`}
+          >
+            <FiCode /> SVG Icon Studio
           </button>
         </div>
       </div>
@@ -401,6 +426,192 @@ export default function PlaygroundPage() {
               >
                 <FiCopy /> Copy Quote Total
               </button>
+            </div>
+          </div>
+        {/* TOOL 5: SVG ICON STUDIO */}
+        {activeTool === "svg-studio" && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <FiCode className="text-purple-600" /> SVG & Vector Icon Studio
+              </h3>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Customize stroke weights, color harmonies, rotation, and export production-ready vector markup or React JSX.
+              </p>
+
+              {/* Icon Shape Picker */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Select Vector Icon
+                </label>
+                <div className="grid grid-cols-6 gap-2">
+                  {[
+                    { id: "zap", icon: FiZap, label: "Zap" },
+                    { id: "layers", icon: FiLayers, label: "Layers" },
+                    { id: "shield", icon: FiShield, label: "Shield" },
+                    { id: "heart", icon: FiHeart, label: "Heart" },
+                    { id: "star", icon: FiStar, label: "Star" },
+                    { id: "compass", icon: FiCompass, label: "Compass" },
+                  ].map((item) => {
+                    const IconComp = item.icon;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setIconShape(item.id)}
+                        className={`p-3 rounded-xl border flex flex-col items-center justify-center gap-1 transition-all ${
+                          iconShape === item.id
+                            ? "border-purple-600 bg-purple-50 dark:bg-purple-950/40 text-purple-600 shadow-2xs"
+                            : "border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
+                        }`}
+                      >
+                        <IconComp size={20} />
+                        <span className="text-[10px] font-semibold">{item.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Sliders: Size, Stroke Width, Rotation */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Size: {iconSize}px
+                  </label>
+                  <input
+                    type="range"
+                    min={24}
+                    max={96}
+                    value={iconSize}
+                    onChange={(e) => setIconSize(Number(e.target.value))}
+                    className="w-full accent-purple-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Stroke: {strokeWidth}px
+                  </label>
+                  <input
+                    type="range"
+                    min={1}
+                    max={4}
+                    step={0.5}
+                    value={strokeWidth}
+                    onChange={(e) => setStrokeWidth(Number(e.target.value))}
+                    className="w-full accent-purple-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Rotate: {iconRotation}°
+                  </label>
+                  <input
+                    type="range"
+                    min={0}
+                    max={360}
+                    step={15}
+                    value={iconRotation}
+                    onChange={(e) => setIconRotation(Number(e.target.value))}
+                    className="w-full accent-purple-600"
+                  />
+                </div>
+              </div>
+
+              {/* Color Pickers */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Vector Stroke Color
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="color"
+                      value={iconColor}
+                      onChange={(e) => setIconColor(e.target.value)}
+                      className="w-9 h-9 rounded-lg border border-slate-200 cursor-pointer"
+                    />
+                    <input
+                      type="text"
+                      value={iconColor}
+                      onChange={(e) => setIconColor(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Badge Container Radius: {iconRadius}px
+                  </label>
+                  <input
+                    type="range"
+                    min={0}
+                    max={40}
+                    value={iconRadius}
+                    onChange={(e) => setIconRadius(Number(e.target.value))}
+                    className="w-full accent-purple-600 mt-2"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Preview Box & Code Export */}
+            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/40 p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700 mb-6">
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                    Interactive Live Preview
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-mono">
+                    {iconSize}x{iconSize} • {strokeWidth}px stroke
+                  </span>
+                </div>
+
+                {/* Centered rendered icon */}
+                <div className="h-44 w-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center p-6 shadow-inner">
+                  <div
+                    style={{
+                      transform: `rotate(${iconRotation}deg)`,
+                      borderRadius: `${iconRadius}px`,
+                      color: iconColor,
+                      transition: "transform 0.15s ease",
+                    }}
+                    className="p-4 flex items-center justify-center"
+                  >
+                    {iconShape === "zap" && <FiZap size={iconSize} strokeWidth={strokeWidth} />}
+                    {iconShape === "layers" && <FiLayers size={iconSize} strokeWidth={strokeWidth} />}
+                    {iconShape === "shield" && <FiShield size={iconSize} strokeWidth={strokeWidth} />}
+                    {iconShape === "heart" && <FiHeart size={iconSize} strokeWidth={strokeWidth} />}
+                    {iconShape === "star" && <FiStar size={iconSize} strokeWidth={strokeWidth} />}
+                    {iconShape === "compass" && <FiCompass size={iconSize} strokeWidth={strokeWidth} />}
+                  </div>
+                </div>
+              </div>
+
+              {/* Code Export Actions */}
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const rawSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="${iconColor}" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(${iconRotation}deg);"><path d="..."></path></svg>`;
+                    copyToClipboard(rawSvg);
+                  }}
+                  className="w-full sm:w-1/2 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+                >
+                  <FiCopy /> Copy Raw SVG
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const jsxCode = `<${iconShape.charAt(0).toUpperCase() + iconShape.slice(1)} size={${iconSize}} strokeWidth={${strokeWidth}} color="${iconColor}" style={{ transform: "rotate(${iconRotation}deg)" }} />`;
+                    copyToClipboard(jsxCode);
+                  }}
+                  className="w-full sm:w-1/2 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                >
+                  <FiCode /> Copy React JSX
+                </button>
+              </div>
             </div>
           </div>
         )}
