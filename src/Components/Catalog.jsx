@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import ToolCard from "./ToolCard";
+import ToolListItem from "./ToolListItem";
 import QuickViewModal from "./QuickViewModal";
 import { toolsData, categoriesList } from "../data/toolsData";
 import { useWishlist } from "../context/WishlistContext";
@@ -218,17 +219,29 @@ export default function Catalog({ initialSearch = "" }) {
         </div>
       </div>
 
-      {/* Catalog Grid */}
+      {/* Catalog Grid or List */}
       {filteredTools.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredTools.map((tool) => (
-            <ToolCard
-              key={tool.id}
-              tool={tool}
-              onQuickView={(item) => setQuickViewTool(item)}
-            />
-          ))}
-        </div>
+        viewMode === "grid" ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredTools.map((tool) => (
+              <ToolCard
+                key={tool.id}
+                tool={tool}
+                onQuickView={(item) => setQuickViewTool(item)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {filteredTools.map((tool) => (
+              <ToolListItem
+                key={tool.id}
+                tool={tool}
+                onQuickView={(item) => setQuickViewTool(item)}
+              />
+            ))}
+          </div>
+        )
       ) : (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-12 text-center max-w-lg mx-auto">
           <p className="text-4xl mb-3">🔍</p>
