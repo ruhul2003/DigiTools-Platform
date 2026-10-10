@@ -237,6 +237,126 @@ export const toolsData = [
       "Updates": "Quarterly compensation survey updates",
       "License": "Personal Prep License"
     }
+  },
+  {
+    id: 9,
+    name: "Cloud API Gateway",
+    slug: "cloud-api-gateway",
+    image: "/assets/products/4.png",
+    category: "Automation",
+    badge: "Enterprise",
+    badgeType: "popular",
+    rating: 4.9,
+    reviewCount: 740,
+    downloads: "14.2k",
+    price: 65,
+    originalPrice: 110,
+    period: "monthly",
+    description: "High-performance reverse proxy and serverless webhook dispatcher with zero-lag routing.",
+    longDescription: "Deploy blazing-fast API orchestration across edge networks. Features built-in rate limiting, JWT token verification, automatic payload encryption, and real-time observability telemetry designed for modern cloud architects.",
+    highlights: [
+      "Sub-5ms global latency across 240+ edge locations",
+      "Dynamic rate limiting and DDoS attack shielding",
+      "End-to-end payload transformation and JSON schema validation",
+      "Seamless integration with AWS Lambda, Cloudflare, and Vercel",
+      "Real-time request log streaming with OpenTelemetry export"
+    ],
+    specs: {
+      "Protocols": "HTTP/2, HTTP/3, gRPC, WebSocket",
+      "Throughput": "Up to 500,000 req/sec per cluster",
+      "Deployment": "Docker, Kubernetes, Bare Metal, Serverless",
+      "License": "Enterprise Organization"
+    }
+  },
+  {
+    id: 10,
+    name: "UX Wireframe Masterkit",
+    slug: "ux-wireframe-masterkit",
+    image: "/assets/products/2.png",
+    category: "Design Assets",
+    badge: "Trending",
+    badgeType: "new",
+    rating: 4.8,
+    reviewCount: 890,
+    downloads: "17.6k",
+    price: 34,
+    originalPrice: 59,
+    period: "one-time",
+    description: "1,500+ lo-fi and hi-fi wireframing blocks for rapid web and mobile UX prototyping.",
+    longDescription: "Speed up user research and client concept alignment by 10x. Complete with responsive grid layouts, user journey flowcharts, interactive prototype components, and dark/light UI wireframes in Figma and Sketch.",
+    highlights: [
+      "1,500+ scalable vector wireframe components",
+      "Comprehensive user flow flowchart connector library",
+      "Fully responsive mobile and desktop viewports",
+      "Clean auto-layout 5.0 layers with strict design tokens",
+      "Includes 25 full website template blueprints"
+    ],
+    specs: {
+      "Compatibility": "Figma (.fig), Sketch, Adobe XD",
+      "Typography": "System standard & Google Fonts",
+      "Assets Size": "850 MB digital library",
+      "License": "Commercial & Client Work"
+    }
+  },
+  {
+    id: 11,
+    name: "SEO Rank Intelligence",
+    slug: "seo-rank-intelligence",
+    image: "/assets/products/1.png",
+    category: "AI Tools",
+    badge: "Best Seller",
+    badgeType: "best",
+    rating: 4.9,
+    reviewCount: 1530,
+    downloads: "28.4k",
+    price: 45,
+    originalPrice: 79,
+    period: "monthly",
+    description: "Automate keyword clustering, SERP competitor analysis, and AI meta-optimization.",
+    longDescription: "Dominate search engine results pages with actionable algorithmic insights. Parses top-ranking competitors, detects content gaps, optimizes schema markup, and generates rich snippet code snippets effortlessly.",
+    highlights: [
+      "Real-time SERP keyword rank tracker across 180 countries",
+      "AI content optimization score with semantic LSI extraction",
+      "Automated technical site audit and broken link crawler",
+      "Structured data JSON-LD schema builder with one-click copy",
+      "Competitor backlink gap radar and anchor text analysis"
+    ],
+    specs: {
+      "Data Frequency": "Daily rank tracking updates",
+      "Search Engines": "Google, Bing, DuckDuckGo, Yahoo",
+      "Integrations": "Google Search Console, Google Analytics 4",
+      "License": "Agency Unlimited"
+    }
+  },
+  {
+    id: 12,
+    name: "Sound & Audio Studio",
+    slug: "sound-audio-studio",
+    image: "/assets/products/3.png",
+    category: "Productivity",
+    badge: "New Release",
+    badgeType: "new",
+    rating: 4.8,
+    reviewCount: 520,
+    downloads: "11.1k",
+    price: 22,
+    originalPrice: 40,
+    period: "one-time",
+    description: "Royalty-free cinematic sound effects, ambient audio loops, and podcast intro assets.",
+    longDescription: "Elevate your videos, podcasts, mobile applications, and web interactions with studio-grade audio. Includes 3,500+ lossless WAV sound effects, UI micro-interaction clicks, and loopable background tracks.",
+    highlights: [
+      "3,500+ lossless 24-bit 96kHz master sound effects",
+      "Modern UI interaction chime and click sound pack",
+      "Loopable ambient background tracks for video creators",
+      "Categorized by mood, genre, and duration",
+      "100% royalty-free for commercial ads and apps"
+    ],
+    specs: {
+      "Audio Format": "WAV (24-bit / 96kHz) & MP3 (320kbps)",
+      "Total Size": "4.2 GB uncompressed master library",
+      "Attribution": "No attribution required",
+      "License": "Commercial Worldwide"
+    }
   }
 ];
 
